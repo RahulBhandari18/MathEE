@@ -1,0 +1,705 @@
+\documentclass[11pt]{article}
+\makeatletter
+\newif\if@borderstar
+\def\bordermatrix{\@ifnextchar*{%
+\@borderstartrue\@bordermatrix@i}{\@borderstarfalse\@bordermatrix@i*}%
+}
+\def\@bordermatrix@i*{\@ifnextchar[{\@bordermatrix@ii}{\@bordermatrix@ii[()]}}
+\def\@bordermatrix@ii[#1]#2{%
+\begingroup
+\m@th\@tempdima8.75\p@\setbox\z@\vbox{%
+\def\cr{\crcr\noalign{\kern 2\p@\global\let\cr\endline }}%
+\ialign {$##$\hfil\kern 2\p@\kern\@tempdima & \thinspace %
+\hfil $##$\hfil && \quad\hfil $##$\hfil\crcr\omit\strut %
+\hfil\crcr\noalign{\kern -\baselineskip}#2\crcr\omit %
+\strut\cr}}%
+\setbox\tw@\vbox{\unvcopy\z@\global\setbox\@ne\lastbox}%
+\setbox\tw@\hbox{\unhbox\@ne\unskip\global\setbox\@ne\lastbox}%
+\setbox\tw@\hbox{%
+$\kern\wd\@ne\kern -\@tempdima\left\@firstoftwo#1%https://www.overleaf.com/project/60b8d50d4caaa638a5f4fdef
+\if@borderstar\kern2pt\else\kern -\wd\@ne\fi%
+\global\setbox\@ne\vbox{\box\@ne\if@borderstar\else\kern 2\p@\fi}%
+\vcenter{\if@borderstar\else\kern -\ht\@ne\fi%
+\unvbox\z@\kern-\if@borderstar2\fi\baselineskip}%
+\if@borderstar\kern-2\@tempdima\kern2\p@\else\,\fi\right\@secondoftwo#1 $%
+}\null \;\vbox{\kern\ht\@ne\box\tw@}%
+\endgroup
+}
+\makeatother
+\usepackage{tcolorbox}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{tfrupee}
+\usepackage{graphicx}
+\usepackage{amssymb,amsfonts}
+\usepackage{textcomp}
+\usepackage{natbib}
+\usepackage{}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{titletoc}
+\usepackage{lipsum}
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\pdfminorversion=4
+	% NOTE: To produce blinded version, replace "0" with "1" below.
+	\newcommand{\blind}{0}
+	
+	%%%%%%% IISE Transactions margin specifications %%%%%%%%%%%%%%%%%%%
+	% DON'T change margins - should be 1 inch all around.
+	\addtolength{\oddsidemargin}{-.5in}%
+	\addtolength{\evensidemargin}{-.5in}%
+	\addtolength{\textwidth}{1in}%
+	\addtolength{\textheight}{1.3in}%
+	\addtolength{\topmargin}{-.8in}%
+    \makeatletter
+    \renewcommand\section{\@startsection {section}{1}{\z@}%
+                                       {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                       {2.3ex \@plus.2ex}%
+                                       {\normalfont\fontfamily{phv}\fontsize{16}{19}\bfseries}}
+    \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                         {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                         {1.5ex \@plus .2ex}%
+                                         {\normalfont\fontfamily{phv}\fontsize{14}{17}\bfseries}}
+    \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                        {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                         {1.5ex \@plus .2ex}%
+                                         {\normalfont\normalsize\fontfamily{phv}\fontsize{14}{17}\selectfont}}
+    \makeatother
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%% IISE Transactions package list %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\usepackage{amsmath}
+	\usepackage{graphicx}
+	\usepackage{enumerate}
+	\usepackage{natbib} %comment out if you do not have the package
+	\usepackage{url} % not crucial - just used below for the URL
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%% Author package list and commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%% Here are some examples %%%%%%%%%%%%%%
+	%	\usepackage{amsfonts, amsthm, latexsym, amssymb}
+	%	\usepackage{lineno}
+	%	\newcommand{\mb}{\mathbf}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\begin{document}
+		
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\def\spacingset#1{\renewcommand{\baselinestretch}%
+			{#1}\small\normalsize} \spacingset{1}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+		\if0\blind
+		{
+			\title{\bf {Markov Chains \& Queuing Theory to Optimize a Vaccine Center System}}
+			\author{}
+			\date{}
+			\maketitle
+		} \fi
+		
+		\if1\blind
+		{
+
+            \title{\bf \emph{IISE Transactions} \LaTeX \ Template}
+			\author{Author information is purposely removed for double-blind review}
+			
+\bigskip
+			\bigskip
+			\bigskip
+			\begin{center}
+				{\LARGE\bf \emph{IISE Transactions} \LaTeX \ Template}
+			\end{center}
+			\medskip
+		} \fi
+		\bigskip
+		
+	\begin{center}
+	    \textbf{Mathematics Extended Essay}
+	\end{center}
+			
+			
+			
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+	    \bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+	    \bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+	    \bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\bigskip
+		\begin{center}
+		   
+		\end{center}
+
+	%\newpage
+	\spacingset{1.5} % DON'T change the spacing!
+
+\newpage
+
+
+
+
+
+% The complete ToC 
+\tableofcontents
+
+\clearpage
+
+% ToC of the main sections
+\startcontents[mainsections]
+\printcontents[]{l}{1}{\setcounter{tocdepth}{2}}
+
+\stopcontents[mainsections]
+
+
+
+
+\newpage
+\section{Introduction:} \label{s:intro}
+
+
+
+I came home on the 3rd of May when my boarding school shut classes amidst the height of the 2nd COVID wave in India. As I sat in our car on the drive home, the headline on the Economic Times that lay on my mother’s lap screamed “India’s vaccination drive in crumbling”. Long lines at vaccination centers all around India were resulting in chaos and panic. Ruby Hall, a hospital round the corner from where we live, had a line that snaked for more than a hundred meters outside the facility.\\
+For my EE assignment, I would like to utilize my understanding of mathematics to design a vaccination center such that the chance of overcrowding is minimized. Furthermore, I will explore whether critical resources can be optimized in the vaccination center’s design. The mathematics I will deploy as part of my vaccination center design is the theory of Markov Chains. The inputs to my optimal design will be:\\
+a) rate at which people enter the center for vaccinations, \\
+b) the rate at which these people are vaccinated, and \\
+c) the cost of each serving station (a proxy for scarce healthcare resources) \\
+\linebreak
+The constraints to the design are:\\
+a) the numbers of seats in the waiting room of the vaccination center, and\\
+b) the confidence level to which overcrowding is to be avoided. \\
+\linebreak
+Finally, the output of my design will be the optimal number of serving centers needed and the methodology for deploying these serving stations. The data collection for the inputs is based on a field visit to Ruby Hall Hospital in Koregaon Park, Pune. The analysis of the data is used to design a vaccination center as part of a corporate vaccination drive  being conducted by Ruby Hall Hospital.
+
+
+\section{Research Question:} \label{s:intro}
+The topic I would like to research for my Mathematics EE is “Can the theory of Markov Chains be utilized to optimize a vaccination center in which the use of scarce healthcare resources is minimized while maximizing the probability of low wait times for patients?”
+
+
+
+\section{Background:} \label{s:sec2}
+
+When I began making this EE back in summer of 2021, vaccines were still not largely available on the market. Now, when I am submitting this paper, the supply of vaccines in the area has increased. The optimal vaccination center design case is a queuing problem where people enter the queue at a random but predictable rate and these people get serviced also at a random yet predictable rate. The length of the queue is defined by the buffer that is available, essentially waiting area seats at the vaccination center. Any overflow of this buffer is termed as overcrowding and this overcrowding is a defect that is to be avoided. To model this process using mathematics, an understanding of Queuing Theory and Markov Chains is needed.
+
+
+
+\subsection{Queuing Theory:} 
+
+Queuing theory is the mathematical investigation of waiting in queues or lines. It can be used to model any issues that may arise from coinciding access to a shared resource. In this case, that shared resource is a Covid vaccine center. The mathematics utilized in the theory can model the blocking probability or the average delay in a system, for example, while also keeping in mind dimension resources such as the number of service counters, or the size of waiting buffer.$^{[1]}$ \\
+The characterization of the arrival of customers in this system, in other words, the way customers enter the system, can be modeled using a Poisson process. This means that arrival events occur in a random fashion, are independent of each other, and are exponentially distributed. Clients that arrive must wait in a buffer, or seating area if all the service counters are occupied. We must also specify the scheduling policy which is the order in which customers can access the service counters. As described by Jean Walrand and Pravin Varaiya in their paper about High-Performance Communication Networks, there are various policies that systems can use to manage the input and outflow of 'patients' in a system. The policy used in this system, also the most common one, is known as the FIFO Policy (First in First Out).$^{[2]}$ In this system, $\lambda$ is the arrival rate which can be denoted as the average number of customer arrivals per unit of time. Similarly, the service rate ($\mu$) can be denoted as the average number of customers that can be serviced by the system per unit of time.
+
+\footnote{Mansa, Julius. Queuing Theory, The Investopedia Team, 25 Apr. 2021, www.investopedia.com/terms/q/queuing-theory.asp.}
+\footnote{Walrand, Jean, and Pravin Varaiya. “Chapter 9 - Control of Networks: Mathematical Background.” High-Performance Communication Networks, Second ed., Morgan Kaufmann, 2000.}
+
+\subsection{Markov Chains:} \label{s:methods}
+
+According to MIT Professor, John Tsitsiklis' lecture on Markov Chains, Markovian modeling is a branch of mathematics that allows for the representation of probabilistic interactions for statistically random processes$^{[3]}$. The process to be modeled is set as a series of conditional interactions, hence the use of the word “chain”. The transition from one state of the chain to other is determined by some probability distribution. The probability distributions must satisfy the Markov property for the overall process to be classified as a Markov Chain. The unique property of Markov Chains is that the transition from one state to another is memoryless – i.e. the probability of going from one state to next depends only on a time invariant probability distribution. This distribution is not dependent on how the process reached a particular state.\\
+The memory-less property of the exponential distributed can be modeled mathematically$^{[4]}$: $$P(X_{n+1} = x \hspace{1mm} | \hspace{1mm} X_1 = x_1, X_2 = x_2,.., X_n = x_n)$$
+$$\therefore P(X_{n+1} = x \hspace{1mm} | \hspace{1mm} X_n = x_n)$$
+
+Markov chains are models used to represent the random flow of a variable through a discrete and defined set of possible outcomes. Although there are two types of Markov chains (discrete-time queues, and continuous-time queues), because the situation of vaccine center requires us to record the state of the system at every unit of time, we will solely be looking at discrete time Markov chains. In DTMCs, the state of the variable in the queue is recorded per unit of time; for example: at time = 5, the system is at state 5 (there are 5 people in the vaccine center), and at time = 6, the system is at state 7 (there are 7 people in the center $\xrightarrow{}$ from minute 5 to 6, 2 people entered the center). The chain will remain in the same state for at least one unit of time before making any transition (a change in state). Again, the essential characteristic that makes this process stochastic and Markovian, is that the future state, given the present state, is completely independent of the past. To begin, I will be discussing Markov chains that are time-homogeneous. This means that all transition probabilities are the same at any time. \\
+
+\footnote{Tsitsiklis, John. Probabilistic Systems Analysis and Applied Probability MIT Lecture 16, Markov Chains 1. Youtube, MIT OpenCourseWare, 2011, https://youtu.be/IkbkEtOOC1Y. Accessed 27 Jan. 2022.}
+\footnote{Rocca, Joseph. Introduction to Markov Chains, Towards Data Science, 25 Feb. 2019, towardsdatascience.com/brief-introduction-to-markov-chains-2c8cab9c98ab.}
+
+Being a part of queuing theory, Markov chains are utilized from engineers to computer scientists to optimize situations like the progression of calls that a telephone network carries. There is a randomness in the state of a call and the ability to place one that can be analysed using discrete-time Markov chains. 
+
+
+
+
+\section{Experiment and Data:}
+I sat in the waiting room for a COVID-19 vaccine administration center and counted how many people were there. To begin with, there were 7 people in the room. For the next hour (60 minutes), in intervals of 5 minutes, I recorded how many people left the waiting room and how many people entered. 
+
+\label{s:numerical}
+% \begin{tcolorbox}
+% \begin{tikzpicture}
+% \begin{axis1}[
+%     title={Time vs. # of individuals that entered waiting room},
+%     xlabel={Time [minutes]},
+%     ylabel={Number of people that entered waiting room},
+%     xmin=0, xmax=65,
+%     ymin=0, ymax=15,
+%     xtick={0,5,10,15,20,25,30,35,40,45,50,55,60},
+%     ytick={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20},
+%     legend pos=north west,
+%     ymajorgrids=true,
+%     grid style=dashed,
+% ]
+
+% \addplot[
+%     color=blue,
+%     mark=square,
+%     ]
+%     coordinates {
+%     (0,0)(5,6)(10,10)(15,4)(20,6)(25,6)(30,9)(35,6)(40,7)(45,9)(50,6)(55,6)(60,6)
+%     };
+%     \legend{# of people that entered waiting room}
+    
+% \end{axis1}
+% \end{tikzpicture} 
+% \end{tcolorbox}
+
+
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{0.75}
+\begin{center}
+\begin{tabular}
+{|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|}
+\hline
+\multicolumn{4}{|c|}{Waiting Area Data} \\
+\hline
+Time \hspace{11mm}Interval & Enter & Exit & Total People in System \\
+\hline
+0:00 - 4:59 & 6 & 9 & 4  \\
+5:00 - 9:59 & 10 & 7 & 7  \\
+10:00 - 14:59 & 4 & 5 & 6  \\
+15:00 - 19:59 & 6 & 5 & 7  \\
+20:00 - 24:59 & 6 & 8 & 5  \\
+25:00 - 29:59 & 9 & 6 & 8  \\
+30:00 - 34:59 & 6 & 7 & 7  \\
+35:00 - 39:59 & 7 & 9 & 5  \\
+40:00 - 44:59 & 9 & 4 & 10  \\
+45:00 - 49:59 & 6 & 2 & 14  \\
+50:00 - 54:59 & 6 & 4 & 16  \\
+55:00 - 60:00 & 6 & 8 & 14  \\
+\hline
+\end{tabular}
+\end{center}
+
+From the table above, we can look at the 'Enter' and 'Time Interval' columns in order to calculate the arrival rate ($\lambda$) for this system. 
+
+$$Arrival \hspace{1.5mm} Rate:  \sum_{0:00 - 4:59}^{55:00 - 60:00} \frac{\text{Enter}}{60} = \frac{6+10+4+6+6+9+6+7+9+6+6+6}{60}= \frac{81}{60} = \boxed{1.35}$$
+\linebreak
+An average arrival rate of 1.35 means that every minute, 1.35 people will enter the vaccine center. \\
+Now that we have derived the arrival rate, the rate at which people or cases enter the system, we must now find the service rate, which is the rate at which people leave the system. There are two service counters in the vaccine center. Therefore, the final derived service rate will be based on if there are servers in the system. In order to find $\mu$, we must look at the data collected after the waiting area. The data can be seen in the tables below.
+
+\begin{center}
+\begin{tabular}[h?]
+{|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.6cm}|}
+\hline
+\multicolumn{4}{|c|}{Service Counter 1} \\
+\hline
+Trial & Min & Seconds & Total Time (sec) \\
+\hline
+ 1 & 2 & 33.05 & 153.05 \\
+ 2 & 2 & 14.12 & 134.12 \\
+ 3 & 2 & 32.89 & 152.89 \\
+ 4 & 2 & 13.04 & 133.04 \\
+ 5 & 2 & 23.37 & 143.37 \\
+ 6 & 2 & 37.71 & 157.71 \\
+ 7 & 2 & 37.96 & 157.96 \\
+ 8 & 1 & 49.75 & 167.11 \\
+ 9 & 2 & 22.98 & 142.98 \\
+ 10 & 2 & 43.87 & 163.87 \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}
+{|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.6cm}|}
+\hline
+\multicolumn{4}{|c|}{Service Counter 2} \\
+\hline
+Trial & Min & Seconds & Total Time (sec) \\
+\hline
+ 1 & 2 & 16.39 & 136.39 \\
+ 2 & 2 & 13.41 & 133.41 \\
+ 3 & 2 & 21.23 & 141.23 \\
+ 4 & 2 & 14.06 & 134.06 \\
+ 5 & 2 & 37.58 & 157.58 \\
+ 6 & 2 & 48.83 & 168.83 \\
+ 7 & 2 & 21.35 & 141.35 \\
+ 8 & 2 & 3.12 & 123.12 \\
+ 9 & 2 & 25.72 & 145.72 \\
+ 10 & 2 & 19.65 & 139.65 \\
+\hline
+\end{tabular}
+\end{center}
+ \linebreak
+ From the two tables above (each representing a service counter), we can look at the 'Trial' and 'Total Time' columns in order to calculate the service rate ($\mu$) for this system. In the below formula, the first parenthesis signifies the total time taken for the 10 trials in service counter 1, and the second parenthesis signifies the total time taken for the 10 trials in service counter 2.
+$$\text{Service Rate}:  \frac{(\sum_{\text{Trial 1}}^{\text{Trial 10}} \text{ Total Time}) + (\sum_{\text{Trial 1}}^{\text{Trial 10}} \text{ Total Time})}{20} = \frac{2962.96}{20} = 148.148 \text{ seconds/service}$$
+This answer, however, is in seconds per service, and needs to be converted to people serviced in the system per minute. It also represents the average for one server, and not the entire current system (which has two servers). Therefore, the following calculations must be made to find the service rate:\\
+\linebreak
+(converting to minutes)$\frac{148.148}{60}=2.47 \longrightarrow$ (for two servers) $\frac{2.47}{2} = 1.234 \longrightarrow{}$ (converting to people served per minute) $\frac{1}{1.234} = \boxed{0.81}$ people served per minute\\
+\linebreak
+Therefore, 0.81 is the service rate ($\mu$) for this system.
+ 
+ 
+ \subsection{Data Analysis:}
+ 
+Knowing the arrival rate, the service rate, and their associated distributions are the only two critical parameters required for system design. A steady state Markov Chain has probabilities associated with each state of the system. In a system with a buffer of 10, the states would range from 0 in buffer (no one waiting) to 10 in buffer (10 people waiting) and anything above 10 being called out as overflow (crowding). \textbf{The vaccination center is a system with a waiting room of 10 people (buffer capacity) and patient arrival rates and patient service rates as per the data collected in Section 4. The $1^{st}$ goal of data analysis is to design a system where there is less than 5\% chance of overflow in an 8 hour operating period.} To achieve this goal, the steps to be followed are:\\
+\linebreak
+\textbf{1}) \hspace{1mm} Calculate jump probabilities from one state to another. The arrival rate, the service rate, and the associated distribution of these processes is used to calculate the jump probability (Section 5.1).\\
+\linebreak
+\textbf{2}) \hspace{1mm} The Birth-Death process logic is used to model end state probabilities of any Markov Chain. It is proved that a system where arrival rate is faster than service rate, the system is unstable with an undefined end state. A transition matrix defines the jump state probability from any one state to all other states. (Section 5.3)\\
+\linebreak
+\textbf{3}) \hspace{1mm} Analysis from a) and b) is combined to calculate end state probabilities of all possible states. The end state probability from State 0 to State 10 is added to calculate the total probability that the end state does not overflow. (Section 5.4)\\
+\linebreak
+\textbf{4}) \hspace{1mm} The number of service stations are increased to the point that the total probability of overflow is less than 5\%. (Section 5.6)
+
+ 
+\section{Investigation}
+\subsection{Jump Probability (Poisson Distribution) Calculation:} 
+
+A literature study of arrival patterns indicates that such patterns are best modelled as a Poisson process. In a Poisson process, the interarrival time between two consecutive customers is an exponential with parameter $\lambda$. The exponential distribution is “memoryless”, meaning that the time it takes for the next patient to arrive is independent of how long ago the previous patient arrived. The other requirement for a Poisson process is that only one customer arrives at any one instant (the next customer can be an infinitesimal time interval later). The arrival rate at a vaccination rate meets both these properties and hence can be modelled as a Poisson process. Similarly, the departure rate
+or service rate can also be modelled as an exponential distribution. \\
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=13.5cm, height=10.5cm]{exp.png}
+    \caption{Poisson process distribution graph$^{[4]}$}
+    \label{exp}
+\end{figure}\\
+\FloatBarrier
+\footnote{Ide, Kazuki. Distribution of an Exponential Distribution. If a Random Variable, x Is Exponentially Distributed, f (x) = Λe −Λx for x ≥ 0 Where λ Is the Rate Parameter. The Graph of an Exponential Distribution Starts on the y-Axis at a Positive Value (λ) and Decreases to the Right. . Research Gate, Feb. 2017, www.researchgate.net/figure/Distribution-of-an-exponential-distribution-If-a-random-variable-x-is-exponentially_fig1_313477966.}
+From the data collected in Section 4, the values of $\lambda$ and $\mu$ are derived. To convert the arrival and service rates into the jump probability that $x$ patients enter or leave in one minute, the following mathematics is utilized:\\
+\underline{A}. Set a sufficiently small interval as $U$ and the probability of one change in that interval as $\lambda U$. And the probability of two or more changes in a system in a sufficiently short interval is essentially 0. \\
+\underline{B}. Let x denote the number of changes in an interval of 1 minute. If we portion the unit interval into U sub-intervals of length $\frac{1}{U}$, we will be able to find the probability that one change occurs in each of exactly 'x' of these U sub-intervals.\\
+\underline{C}. The probability of one change occurring in any one sub-interval is $\lambda \cdot \frac{1}{U}$ or $\frac{\lambda}{U}$.\\
+\underline{D}. Therefore, if we represent each occurrence as a Binomial trial in Bernoulli's Distribution, with 'p' representing $\frac{\lambda}{U}$ and 'q' representing $(1-\frac{\lambda}{U})$, then $P(X=x) = $\begin{pmatrix} 
+	n \\
+	x \\
+	\end{pmatrix}
+	$\cdot(p)^x\cdot(q)^{U-x}$. \\
+\underline{E}. $U$ must also tend to $\infty$. This is so that the intervals of $\frac{1}{U}$ can become as small as possible. 
+\begin{tcolorbox}
+
+$${P(X=x) = \frac{U!}{x!\cdot(U-x)!}\cdot(\frac{\lambda}{U})^x\cdot(1-\frac{\lambda}{U})^{U-x}, \lim_{U \to \infty}}$$
+\end{tcolorbox}
+
+
+Using algebra, we can take the $x!$ from the denominator of the first expression and place it in the denominator of the second expression, $\frac{\lambda^x}{U^x}$. Then, take the $U^x$ from that second expression, and place it in the denominator of $\frac{U!}{(U-x)!}$. And finally, using the rules of exponents, we can separate $(1-\frac{\lambda}{U})^{U-x}$ into $(1-\frac{\lambda}{U})^U \cdot(1-\frac{\lambda}{U})^{-x}$ because of their like bases. All of these changes gives the following equation:\\
+
+\begin{matrix} 
+	P(X = x) \\
+	$lim$ \\
+	$U \xrightarrow{} \infty$ \\
+	\end{matrix}$=(\frac{U\cdot(U-1)\cdot...(U-x+1)}{U^x})\cdot(\frac{\lambda^x}{x!})\cdot(1-\frac{\lambda}{U})^U \cdot(1-\frac{\lambda}{U})^{-x}$\\
+	\vspace{5pt}
+\hrule
+\vspace{6pt}
+	\\If we split this equation up into four parts, we can simplify it easier. 
+	
+	\textcircled{1}$\Longrightarrow \frac{U\cdot(U-1)\cdot...(U-x+1)}{U^x}$
+	
+	\textcircled{2}$\Longrightarrow\frac{\lambda^x}{x!}$
+	
+	\textcircled{3}$\Longrightarrow(1-\frac{\lambda}{U})^U$
+	
+	\textcircled{4}$\Longrightarrow(1-\frac{\lambda}{U})^{-x}$\\
+	\vspace{5pt}
+\hrule
+\vspace{6pt}
+\begin{matrix} 
+	\textcircled{1} $\xrightarrow{}$ $lim$ \\
+	$ \hspace{5mm} U \xrightarrow{} \infty$ \\
+	\end{matrix}	$(\frac{U\cdot(U-1)\cdot(U-2)\cdot...(U-x+1)}{(U)\cdot(U)\cdot(U)\cdot...(U)\cdot}) = [1\cdot(1-\frac{1}{U})\cdot(1-\frac{1}{U})\cdot(1-\frac{2}{U})\cdot(1-\frac{x-1}{U})\cdot] = 1$
+
+\\Now, \begin{matrix} 
+	P(X = x) \\
+	$lim$ \\
+	$U \xrightarrow{} \infty$ \\
+	\end{matrix}$=(1)\cdot(\frac{\lambda^x}{x!})\cdot(1-\frac{\lambda}{U})^U \cdot(1-\frac{\lambda}{U})^{-x}$
+	\vspace{5pt}
+\hrule
+\vspace{6pt}
+	\\\begin{matrix} 
+	\textcircled{3} $\xrightarrow{}$ $lim$ \\
+	$ \hspace{5mm} U \xrightarrow{} \infty$ \\
+	\end{matrix} $(1-\frac{\lambda}{U})^U = e^{(log((1-\frac{\lambda}{U})^U))} = e^{((U\cdot log(1-\frac{\lambda}{U})}$
+	$= e^{\lim_{U \to \infty} (U\cdot log(1-\frac{\lambda}{U}))}$\\
+\\	$= e^{\lim_{U \to \infty} \frac{log(1-\frac{\lambda}{U})}{1/U}}$ Because this limit gives us an indeterminate expression, we need to use L'Hospital's Rule:\\ \begin{matrix} 
+	$lim$ \\
+	$U \xrightarrow{} \infty$ \\
+	\end{matrix}$\frac{\frac{d}{dU}log(1-\frac{\lambda}{U})}{\frac{d}{dU}(\frac{1}{U})} $\\
+\\\begin{matrix} 
+	$lim$ \\
+	$U \xrightarrow{} \infty$ \\
+	\end{matrix}$=(\frac{\frac{\lambda}{U^2\cdot (1-\frac{\lambda}{U}}}{-\frac{1}{U^2}}) = -\frac{\lambda\cdot U}{U-\lambda}$\\
+\linebreak
+$\therefore e^{(\begin{matrix} 
+	lim \\
+	U \xrightarrow{} \infty \\
+	\end{matrix}(-\frac{\lambda\cdot U}{U-\lambda}))} = e^{(-\lambda\cdot(\begin{matrix} 
+	lim \\
+	U \xrightarrow{} \infty \\
+	\end{matrix}\frac{U}{U-\lambda}))} = e^{(-\lambda\cdot(\begin{matrix} 
+	lim \\
+	U \xrightarrow{} \infty \\
+	\end{matrix}\frac{1}{\frac{\lambda}{U}}))}$
+\\$\therefore \frac{\lambda}{U}$ tends to 0 as U approaches $\infty$ and $\begin{matrix} 
+	lim \\
+	U \xrightarrow{} \infty \\
+	\end{matrix}(1-\frac{\lambda}{U})^U = e^{-\lambda}$
+	\vspace{5pt}
+\hrule
+\vspace{6pt}
+\\\textcircled{4}$\Longrightarrow$ And for the final part of the equation, $(1-\frac{\lambda}{U})^{-x}$, as U tends to $\infty$, this part of the equations equals 1 as $1^{-x}=1$
+
+\\$\therefore$\begin{matrix} 
+	P(X = x) \\
+	$lim$ \\
+	$U \xrightarrow{} \infty$ \\
+	\end{matrix}$=(1)\cdot(\frac{\lambda^x}{x!})\cdot(e^{-\lambda})\cdot(1) = \frac{\lambda^x\cdot e^{-\lambda}}{x!}$
+	\\
+	\vspace{5pt}
+\hrule
+\vspace{6pt}
+	With this final equation, $\boxed{P(X = x) =\frac{\lambda^x\cdot e^{-\lambda}}{x!}}$, we can now find the probability of $x$ states entering or $x$ states exiting the system, given an arrival rate $\lambda$ or a service rate $\mu$. From the preliminary data that I collected at the vaccine center, it can be calculated that \boxed{$\lambda$ = 1.35 people/minute} and \boxed{$\mu$ = 0.81 people/minute (for 2 serving stations)}. $\lambda > \mu$ signifies that the rate of incoming people is larger than the rate of outgoing people. While this will be proven below using mathematics, one can see that if states in a system increase at a rate faster than they decrease in a system, that system will soon overflow. \\By utilizing the derived values of arrival rate and service rate, as well as the equation for a Poisson process with given state $x$, we can find the probability that there are x state entries or x state departures at a given time. $$\text{The probability of arrivals in a given state can be denoted as } \boxed{p(x) = \frac{\lambda^x \cdot e^{-\lambda}}{x!}}$$ $$\text{The probability of departures from the system at a given state can be denoted as } \boxed{p(x) = \frac{\mu^x \cdot e^{-\mu}}{x!}}$$ The first 6 iterations of each arrival and each departure has been shown below. The purpose of doing this is to show the probability of x arrivals and x departures in a given time. \\\\
+For x=0 $\lvert$ p(0) = $\frac{\lambda^0\cdot e^{-\lambda}}{0!} = e^{-\lambda} = 0.259$ \hspace{15mm} For x=0 $\lvert$ p(0) = $\frac{\mu^0\cdot e^{-\mu}}{0!} = e^{-\mu} = 0.445$
+\\
+For x=1 $\lvert$ p(1) = $\frac{\lambda^1\cdot e^{-\lambda}}{1!} = p(0)\cdot \lambda= 0.349$ \hspace{9mm} For x=1 $\lvert$ p(1) = $\frac{\mu^1\cdot e^{-\mu}}{1!} = 0.360$
+\\
+For x=2 $\lvert$ p(2) = $\frac{\lambda^2\cdot e^{-\lambda}}{2!} = \frac{p(1)\cdot \lambda}{2} = 0.236$ \hspace{12mm} For x=2 $\lvert$ p(2) = $\frac{\mu^2\cdot e^{-\mu}}{2!} = 0.146$
+\\
+For x=3 $\lvert$ p(3) = $\frac{\lambda^3\cdot e^{-\lambda}}{3!} = \frac{p(2)\cdot \lambda}{3} = 0.106$ \hspace{12mm} For x=3 $\lvert$ p(3) = $\frac{\mu^3\cdot e^{-\mu}}{3!} = 0.039$
+\\
+For x=4 $\lvert$ p(4) = $\frac{\lambda^4\cdot e^{-\lambda}}{4!} = \frac{p(3)\cdot \lambda}{4} = 0.036$ \hspace{12mm} For x=4 $\lvert$ p(4) = $\frac{\mu^4\cdot e^{-\mu}}{4!} = 0.008$
+\\
+For x=5 $\lvert$ p(5) = $\frac{\lambda^5\cdot e^{-\lambda}}{5!} = \frac{p(4)\cdot \lambda}{5} = 0.0097$ \hspace{10mm} For x=5 $\lvert$ p(5) = $\frac{\mu^5\cdot e^{-\mu}}{5!} = 0.0013$\\
+
+
+As one can see, the probability that there are 0 departures from the system is higher than that same probability for arrivals. But the probability that there are two arrivals is 0.236 and probability that there are two departures is 0.146. With numbers like this, the system will soon overflow with arrivals. There are some systems in which some amount of overflow is tolerable. In a bank teller service for example, which is responsible for processing routine operations like cashing checks, depositing money and collecting loan payments, it is acceptable for data entries to enter faster than they leave, to some extent. The same is not the case for our situation. A vaccine center must be efficient while also accepting the maximum amount of patients.\\ Because the vaccine center stays open for 8 hours a day, and these probabilities are represented on a per-minute basis, I ran these permutations in a simulated system for 480 (8 x 60) iterations, 10 times. These 10 iterations will be represented by the 10 colors in the graphs below. I did this for a an unstable system, in which the arrival rate, $\lambda$, was higher than the service rate, $\mu$. As well as a system in which the arrival rate was equal to the service rate, and finally, a stable system, in which the arrival rate was lower than the service rate. \\In order to graph this for iterations and time, I had to create a code and input the transition probability values for $\lambda$ and $\mu$. The code works by declaring a variable '$p$' equal to $0$ signifying the total cases, as well as declaring a variable '$n$' equal to $0$ signifying the time in minutes. Then, using an in-build java function from the mathematics library called 'Math.random()', a random number between $0$ and $1$ is generated. I then multiply this number $1000$ and see check where it lies in the probability ranges for $\lambda$ and $\mu$. If the random number lies in the ranges for arrival rate, then the number of states in the system increases and is added to variable $p$, and is subtracted from the number of cases in the system ($p$) if done for service rate. At the end of this cycle, $n$ is equated to $n+1$ and is looped until the condition: $n<480$, is false. This runs the code for 480 iterations while printing the total number of cases in the system for each minute. The code and graphs for each are shown below.
+
+\FloatBarrier
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm, height=20cm]{code.png}
+    \caption{Current system simulation code using BlueJ}
+    \label{unstable}
+\end{figure}
+
+\FloatBarrier
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=13.2cm, height=9.2cm]{Unstable.png}
+    \caption{Hospital's current system ($\lambda > \mu$)}
+    \label{unstable}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=13.2cm, height=9cm]{Equal.png}
+    \caption{Arrival rate = Service rate ($\lambda = \mu$)}
+    \label{equal}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=13.5cm, height=10.5cm]{Stable.png}
+    \caption{Stable system ($\lambda < \mu$)}
+    \label{stable}
+\end{figure}
+\FloatBarrier
+
+\subsection{Types of systems:} \label{s:numerical}
+In the hospital's current system, Figure \ref{unstable}, all ten simulations left at least 200 individuals in the queue waiting to be served by the hospital at the end of the 8 hours of service. This proportion of arrival rate and service rate means that states in the system increase much faster than they decrease. From Figure \ref{equal}, one can see that even in a system in which the arrival rate is equal to the service rate, the state went as high as 125 individuals in the system for 1 simulation out of the 10, and up to 50 individuals for the other simulations. These numbers are far too high for a hospital to effectively manage. For some days, the hospital maybe be able to work overtime in order to satisfy the number of individuals, but in the long run, this puts pressure on the components of system: arrival counters, service stations, doctors, nurses, etc. Systems where $\lambda$ is higher than $\mu$, or where they are equal, will always be unstable to some extent, but exactly how high the states can go, can be determined by the proportion between the arrival rate and the service rate ($\frac{\lambda}{\mu}$), also known as $\rho$. Because the system represents a Coronavirus vaccine center, the only way the arrival rate can be influenced, is if the center limits or reduces the limits for the number of registrations a day. They can also create a limited buffer or waiting area and deny any individuals that attempt to enter after the buffer is full. These decisions will make the system more stable but they will also drastically slow the rate that people in this specific area can be vaccinated at. During a pandemic, where cases can rise exponentially in just a matter of days, it is important to act fast and flatten the curve. That is why it is better for the center to increase their $\mu$ value and make their system more efficient, rather than implementing policies that reduce the $\lambda$ value and slow entries and the rate of vaccination. That is why $\lambda$ will remain as 1.35, but the value of $\mu$, as well as other characteristics of system, will be modified. 
+
+
+\subsection{Steady State Analysis for a Birth Death Process:} \label{s:numerical}
+
+In order to determine at what state a system will stabilize at (how many individuals will be in the system when time is $\infty$) we must analyse the steady state for the birth death process. A birth death process is where the flow of states in a system is measured by a progression of change in time, where that $dt$ or $\Delta t$ is infinitesimally small. By setting the change in time to an infinitesimally small amount, we can make the assumption that any given time, the only possible transitions in the system are one death, one birth, or no change at all. This means that the only state transitions are from state $n$ to state $n+1$, from state $n$ to state $n-1$, or from state $n$ to state $n$. For Example, in a birth death process which is currently at state 5, the only possible transitions are to state $4$, $5$, or $6$. Because of this assumption, we are also allowed to say that the probability of two or more changes in the system is essentially 0. In order for a system to have a steady state behavior, its characteristics must meet the stability state condition. The condition states that the arrival rate $\lambda$, must be less that the service rate $\mu$. The queue will only be stable if the traffic intensity or load, $\rho \hspace{1mm}$or $\hspace{1mm} (\frac{\lambda}{\mu})$, is less than 1.\\ The transitions from state to state for the system can be represented below using the state, balanced equations, and the derived relationship between $P_{n}$ and $P_{n-1}$, where $P_{0}$ and $P_{1}$ signify the probabilities that the system is at state 0 and state 1 respectively. $\lambda$ and $\mu$ are rates to go to and from states. For example, $\lambda_1$ signifies the arrival rate going out of the first state of the system, and $\mu_3$ means the service rate going out state 3. Using this, the steady state can be derived as shown:
+\begin{figure}
+    \centering
+    \includegraphics[width=16.2cm, height=5.4cm]{flow1.png}
+    \caption{Flow diagram for birth-death process}
+    \label{flow1}
+\end{figure}\\
+
+State \hspace{15mm} Balance Equation \hspace{45mm} Relation\\
+0 \hspace{22mm} $\mu_1P_1 = \lambda_0P_0 \xrightarrow{} \hspace{55mm} P_1 = \frac{\lambda_0}{\mu_1}\cdot P_0$\\
+1 \hspace{22mm} $\lambda_0P_0 + \mu_2P_2 = \lambda_1P_1 + \mu_1P_1 \xrightarrow{} \hspace{29mm}P_2 = \frac{\lambda_1}{\mu_2}\cdot P_1$\\
+n \hspace{22mm} $\lambda_{n-1}P_{n-1} + \mu_{n+1}P_{n+1} = (\lambda_n + \mu_n)\cdot P_n \xrightarrow{} \hspace{9mm}P_n = \frac{\lambda_{n-1}}{\mu_n}\cdot P_{n-1}$\\
+\linebreak
+Based on the diagram above for the birth-death discrete-time markov chain, the transition rate matrix Q, can be seen below.
+
+
+$
+Q = \bordermatrix[{[]}]{%
+            & (0) & (1) & (2) & (i-1) & (i) & (i+1)\cr
+          (0) & -\lambda & \lambda \cr
+          (1) & \mu & -(\lambda + \mu) & \lambda \cr
+          (2) & & \mu & -(\lambda + \mu) & \lambda \cr
+          (i-1) & & & \mu & -(\lambda + \mu) & \lambda \cr
+          (i) & & & &\mu & -(\lambda + \mu) & \lambda \cr
+          (i+1) & & & & &\mu & -(\lambda + \mu)}
+$\\
+\linebreak
+Using the relationship between $P_{n}$ and $P_{n-1}$: ($P_n = \frac{\lambda_{n-1}}{\mu_n}\cdot P_{n-1}$), a normalization that sums the probabilities from state $n$ to $\infty$ can be derived.
+
+$$\textsc{Normalization}:  \sum_{n=0}^{\infty} P_{n} = P_0\cdot(1 + \frac{\lambda_0}{\mu_1}+ \frac{\lambda_0\lambda_1}{\mu_1\mu_2}+ \frac{\lambda_0\lambda_1\lambda_2}{\mu_1\mu_2\mu_3}+...) $$
+However, if the arrival rate between each state stays the same (as it does in this vaccine center's case), and the service rate does not alter with respect to the state (no change in the number of service counters during the period of operation), then $\lambda_0$, $\lambda_1$, $\lambda_2$, and $\lambda_n$, can be written as $\lambda$, and $\mu_0$, $\mu_1$, $\mu_2$, and $\mu_n$, can be written as $\mu$.\\
+$\frac{\lambda}{\mu}=\rho \xrightarrow{} P_1=\rho P_0 \xrightarrow{} P_2=\rho P_1 = \rho^2 P_0 \xrightarrow{} P_3=\rho P_2 = \rho^2P_1 = \rho^3P_0...$
+$P_0+P_1+P_2+P_3+P_4+...\\ = (1+\rho+\rho^2+\rho^3+\rho^4+...)P_0 $\\
+$\xrightarrow{} 1 = \frac{P_0}{1-\rho} \xrightarrow{} P_0 = 1-\rho \xrightarrow{} \boxed{P_n = \rho^n(1-\rho)}$\\
+With this equation, we can now calculate the steady state probabilities of each system. Going back to my research question and my case of the vaccine center specifically, this equation can be used to extrapolate the service rate required by the hospital to keep the the number of people within the buffer limit. 
+
+
+\subsection{95\% Steady State for 10 individuals:} \label{s:numerical}
+
+With $\rho$ less than 1, we have determined that each state will have a steady behavior which can be found using the equation: $P_n = \rho^n(1-\rho)$. We can now compute the minimum number of servers to ensure, with a 95\% chance, that the number of people in the system at any given time will be 10 or below. This can be done by equating the sum of 0 people to 10 people to 0.95\%:
+
+1. \hspace{3mm}$\sum_{n=0}^{n=10} \rho^n(1-\rho)$
+
+2. \hspace{3mm}$(1-\rho)+\rho(1-\rho)+\rho^2(1-\rho)+\rho^3(1-\rho)+\rho^4(1-\rho)+\rho^5(1-\rho)+\\
+\rho^6(1-\rho)+\rho^7(1-\rho)+\rho^8(1-\rho)+\rho^9(1-\rho)+\rho^{10}(1-\rho)$
+
+3. \hspace{3mm}$\xrightarrow{}(1+\rho+\rho^2+\rho^3+\rho^4+\rho^5+\rho^6+\rho^7+\rho^8+\rho^9+\rho^{10})(1-\rho) = 0.95$\\
+Using algebra, we can derive the value of $\rho$.
+
+4. \hspace{3mm} $\therefore \rho = 0.762 = \frac{\lambda}{\mu} = \frac{1.35}{\mu} \xrightarrow{} \mu = 1.78$\\
+
+We know that when there are two servers in the system, $\mu=0.81$. So, with one server $\mu=0.405$. $\frac{1.78}{0.405} = 4.4$ servers. But because the number of servers in a system needs to be an integer value, we can round to 4.4 to where 5 servers gives a $\mu$ value of $5\cdot 0.405 = 2.025$ people/min. Created using the simulation, the graph for 10 iterations in which the system has a $\mu = 2.025$ and a $\lambda = 1.35$ can be seen below.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12.5cm, height=9cm]{5servers.png}
+    \caption{Time vs. 5 servers ($\mu = 2.025$)}
+    \label{5servers}
+\end{figure}
+\FloatBarrier
+For a couple minutes, in 4 of the trials, the number of people in the system went as high as 13, but due to the high service rate, retreated back down to 10, or less than 10, people in the system.
+
+\subsection{Cost of Service:}
+The design chosen above with 5 servers assures the $1^{st}$ goal of 95\% probability of no overcrowding at the vaccination center. The problem with this design is that it also corresponds to high degree of underutilization of servers. In the simulations run in BlueJay, a Java ide, 17865 idle minutes across servers in aggregate were observed over 10 simulations. Although each simulation had an average of 1787 idle minutes per simulation, the highest utilization rate for a simulation was a mere 35\%. The servers are healthcare workers that are in very short supply and hence, a high utilization rate is required. To model this constraint for optimizing utilization of servers, a concept of cost of service is introduced. The server is artificially allocated a cost of Rs. 100\rupee/minute/server. The 5 server simulation then has a cost of Rs. 240,000\rupee. The next section explores the opportunity to reduce this cost by adding a constraint to the system developed above.
+
+
+\subsection{Optimizing Servers:}
+
+We know that with 5 servers, there is a 95\% chance that the number of individuals in the system will not surpass 10. But what if it is not feasible for this specific organization to constantly implement 5 service counters. It would be much more cost-effective to initially have three service counters, and implement three more servers into the system when the state rises to 5 individuals or above. This way, when there are 4 or less people in the system, there are three service counters can be deactivated rather than idle. \\Accomplishing this task means that the system's service rate changes from $3\mu$ to $6\mu$ when the state transitions from 4 people to any higher state in the discrete time interval. The earlier processes were all time-homogeneous, which means that all transition probabilities from any state are the same at any time. But for this optimization process, the transition probabilities is not the same for all times and depends on the current and future states. Below, the diagram for the flow of states and the transition rate matrix, Q, are shown.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16.5cm, height=4.4cm]{flow2.png}
+    \caption{Flow diagram for 3 servers to 6 servers ($\mu \xrightarrow{} 2\mu$)}
+    \label{flow2}
+    \FloatBarrier
+\end{figure}\\
+
+
+
+$
+Q = \bordermatrix[{[]}]{%
+        & (0) & (1) & (2) & (3) & (4) & (5) & (i-1) & (i) \cr
+    (0) & -\lambda & \lambda \cr
+    (1) & 3\mu & -(\lambda + 3\mu) & \lambda \cr
+    (2) & & 3\mu & -(\lambda + 3\mu) & \lambda \cr
+    (3) & & & 3\mu & -(\lambda + 3\mu) & \lambda \cr
+    (4) & & & & 3\mu & -(\lambda + 3\mu) & \lambda \cr
+    (5) & & & & & 6\mu & -(\lambda + 6\mu) & \lambda \cr
+    (i-1) & & & & & & 6\mu & -(\lambda + 6\mu) & \lambda \cr
+    (i) & & & & & & & 6\mu & -(\lambda + 6\mu)}
+$\\
+\linebreak
+$\lambda P_0 = 3\mu P_1 \xrightarrow{} \frac{P_1}{P_0} = \frac{\lambda}{3\mu} = \frac{\rho}{3}$ however, for ease of calculation, we will equate $\frac{\rho}{3}$ with $\rho$ and replace it back at the end $\therefore \frac{\lambda}{3\mu} = \rho \xrightarrow{}$ \textcircled{1}\\
+$\lambda P_1 + 3\mu P_1 = \lambda P_0 + 3\mu P_2 \xrightarrow{} \frac{P_2}{P_1}=\frac{\lambda}{3\mu}=\rho \xrightarrow{}$\textcircled{2}\\
+$6\mu P_5 + \lambda P_3 = 3\mu P_4 + \lambda P_4 \xrightarrow{}$ \textcircled{3}\\
+$6\mu P_6 + \lambda P_4 = 6\mu P_5 + \lambda P_5 \xrightarrow{}$ \textcircled{4}\\
+\textcircled{3}$\xrightarrow{} \frac{P_5}{P_4}=\frac{\lambda}{6\mu} = \frac{\rho}{2}$\\
+\textcircled{4}$\xrightarrow{} \frac{P_6}{P_5}=\frac{\lambda}{6\mu} = \frac{\rho}{2}$\\
+\linebreak
+Using the Normalizing Condition: $\sum_{P_0}^{\infty} = 1 \xrightarrow{} (P_0 + P_1 + P_2 + P_3 + P_4 + P_5 ... P_{\infty}) = 1$\\
+With $\sigma = \frac{\rho}{2}$, $P_0 + \rho P_0 + \rho^2P_0 + \rho^3P_0 + \rho^4P_0 + \sigma\rho^4P_0 + \sigma^2\rho^4P_0...\sigma^{\infty}\rho^4P_0 = 1$\\
+$= P_0[1+\rho+\rho^2+\rho^3+\rho^4+\sigma\rho^4(1+\sigma+\sigma^2+\sigma^3+...\sigma^{\infty})] = 1$\\
+$= P_0[1+\rho+\rho^2+\rho^3+\rho^4+\frac{\sigma(\rho)^4}{1-\sigma}] = 1$\\
+$= P_0[1+\rho+\rho^2+\rho^3+\rho^4+\frac{\frac{\rho}{2}(\rho)^4}{1-\frac{\rho}{2}}] = 1$\\
+$= P_0[1+\rho+\rho^2+\rho^3+\rho^4+\frac{\rho^5}{-\rho+2}] = 1$\\
+By plugging in $\frac{\lambda}{3\mu} = \frac{1.35}{1.215}$ as $\rho$ and by using algebra, we can find the value of $P_0$ to be 0.122. When the is plugged back into $\frac{P_1}{P_0} = \frac{\lambda}{3\mu} = \frac{\rho}{3}$, the value of $P_1$ can be derived to be 0.136. Using the same method, the service probabilities of the system being at other states can be derived.\\
+$P_0 = 0.122$, $P_1 = 0.136$, $P_2 = 0.151$, $P_3 = 0.168$, $P_4 = 0.187$, $P_5 = 0.103$, $P_6 = 0.057$, $P_7 = 0.032$, $P_8 = 0.018$, $P_9 = 0.009$, $P_{10} = 0.005$. Using these probabilities, the system can be modeled as shown below. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm, height=9cm]{final.png}
+    \caption{Transition from 3 servers to 6 servers ($3\mu \xrightarrow{} 6\mu$)}
+    \label{final}
+\end{figure}
+\FloatBarrier
+This system is much more cost effective than the 5 server system and also does not underutilize servers. Because the 3 extra servers are added when the number of people in the system surpasses 4, in the 10 iterations of the simulation, the system never passes a state of 9 people. 
+
+\section{Limitations \& Improvements:} \label{s:numerical}
+The study presented above has several areas of improvement that can be categorized as data collection
+improvement, experiment design improvement, and improvements in modelling.
+
+\subsection{Data Collection Improvement}
+\boldsymbol{A)} Arrival rate data was collected only over a 1-hour period. This may not be sufficient as there may be patterns associated with time of day, day of week, etc. A larger data set will improve analysis.\\
+\boldsymbol{B)} The arrival rate of groups should be separately collected as this data can be relevant for a more complex model.\\
+\boldsymbol{C)} Server data was averaged across the two servers measured. Mapping more servers will provide understanding of performance variance between servers. Also, the impact of training, fatigue, etc. is not measured.
+
+
+\subsection{Experiment Design Improvement}
+\boldsymbol{A)} I designed my experiment as a simple 1 stage Markov Chain with arrival followed by service. In practice, the chain is more complicated. Arrival is followed by registration followed by vaccination followed by waiting again for safety considerations. In my observation, the registration process was much faster than the vaccination process and hence the vaccination event was the service event chosen for design. A 2 stage Markov chain with a shared buffer would be a more appropriate system design.\\
+\boldsymbol{B)} Also, the system was designed with a fixed buffer that corresponded to the number of seats available in the waiting area. A secondary buffer with people waiting outside, with all safety precautions, may be possible.\\
+
+
+\subsection{Improvements in Modelling}
+\boldsymbol{A)} The biggest drawback of my analysis is that in my analysis of Poisson probabilities, I have neglected the probability of greater than one arrivals or departures. This probability, while much smaller than P(0) + P(1), is not insignificant and the model should be modified suitably to take these probabilities into consideration. My computer simulation aligns well with my predicted behaviour and hence, I chose to neglect the probabilities of greater than 1 departures or arrivals. In general, taking these higher probabilities in account will increase the variance in my results and, in turn, increase the probability of overflow.\\
+\boldsymbol{B)} The Markov model I have employed is a discrete model where changes to the system only happen at fixed intervals (e.g. 1 minute). A continuous Markov Chain would be a better model for the system wherein changes to the system can happen at any instant along a continuous time interval. A Poisson process lends itself better to a continuous Markov model. The significantly higher mathematical complexity of a continuous Markov Chain led to the current choice of a discrete Markov chain.\\
+\boldsymbol{C)} The birth death process is modelled as only one arrival or one departure at any one instant. However, group arrivals are possible – e.g. a family coming in a car for vaccinations. Future models can incorporate this probability as well in the transition matrix.\\
+\boldsymbol{D)} The optimization chosen in Section 5.6 is just potential optimization scenario. A mathematical model to find the most optimized solution can also be explored.
+
+
+\section{Conclusion \& Extension:} \label{s:numerical}
+Based on the vast number of improvements listed above, it would greatly interest me to continue studying the application of Markov Chains in different social situations and systems in university. My learning from building this optimization model has several other applications. The direct connection is to other queuing applications such as super market lines. Birth-death processes can be extended to disparate fields ranging from epidemiology, including COVID spread, to evolution. The larger space of Markov Chains has relevance to all fields with “spread” phenomenon including social media and networking. As has been shown, Markov Chains can indeed be utilized to optimize a vaccination center wherein use of scarce healthcare resources is minimized while maximizing probability of low wait times for patients. My analysis indicates that, based on the data collected, that a vaccination center that expects about 750 patients in an 8-hour day, with a waiting room of 10 seats, needs 5 stations to assure a 95\% chance of no overcrowding. Alternatively, the vaccination center with the ability to add or remove stations as per demand can choose to work with 3 servers but then add 3 additional servers each time 5 of the seats in the waiting room are occupied. These additional stations can be removed when the waiting room occupancy falls below 5. Several enhancements are possible to improve the accuracy of the solution by implementing improvements in data collection, system design, and modeling techniques. 
+
+
+
+
+\newpage
+\section{Bibliography and Further Research Links for Citation:} \label{s:numerical}
+
+\begin{center}
+Works Cited\\
+\end{center}
+
+Ide, Kazuki. Distribution of an Exponential Distribution. If a Random Variable, x Is Exponentially Distributed, f (x) = Λe −Λx for x ≥ 0 Where λ Is the Rate Parameter. The Graph of an Exponential Distribution Starts on the y-Axis at a Positive Value (λ) and Decreases to the Right. . Research Gate, Feb. 2017, www.researchgate.net/figure/Distribution-of-an-exponential-distribution-If-a-random-variable-x-is-exponentially-fig1-313477966. \\
+
+Tsitsiklis, John. Probabilistic Systems Analysis and Applied Probability MIT Lecture 16, Markov Chains 1. Youtube, MIT OpenCourseWare, 2011, https://youtu.be/IkbkEtOOC1Y. Accessed 27 Jan. 2022. \\
+
+Mansa, Julius. Queuing Theory, The Investopedia Team, 25 Apr. 2021, www.investopedia.com/\\terms/q/queuing-theory.asp. \\
+
+Rocca, Joseph. Introduction to Markov Chains, Towards Data Science, 25 Feb. 2019, \\towardsdatascience.com/brief-introduction-to-markov-chains-2c8cab9c98ab. \\
+
+Walrand, Jean, and Pravin Varaiya. “Chapter 9 - Control of Networks: Mathematical Background.” High-Performance Communication Networks, Second ed., Morgan Kaufmann, 2000.\\
+
+Vaton, Sandrine, et al. Queuing Theory: from Markov Chains to Multi-Server Systems, EdX, 18 Oct. 2017, 11:42am, learning.edx.org/course/course-v1:IMTx+CS101+2T2021/home. 
+
+
+
+\end{document}
